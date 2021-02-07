@@ -1,0 +1,5 @@
+/src/libs/Logging/bin/Debug/*
+/src/libs/Logging/obj/Debug/*
+/src/libs/Logging/obj/*
+/src/solutions/.idea/*
+/src/solutions/.vs/Logging/v16/*
