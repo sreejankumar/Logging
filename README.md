@@ -86,7 +86,7 @@ The RequestResponseLoggingMiddleware logs the following properties
         public string MachineName { get; set; }
         public string SessionId { get; set; }
 ```
-These properties are the common fields that is used by CloudCall in other API's. These common fields can be filtered in Logstash or in cloudwatch logs.
+These properties are the common fields that are using in API's. These common fields can be filtered in Logstash or in cloudwatch logs.
 
 Regarding how the Logs can be identified easily is as follows
 ```csharp
