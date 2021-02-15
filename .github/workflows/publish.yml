@@ -7,7 +7,7 @@ on:
   # Triggers the workflow on push or pull request events but only for the main branch
  push:
     branches:
-      - master
+      - main
   # Allows you to run this workflow manually from the Actions tab
  workflow_dispatch:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -17,11 +17,11 @@ jobs:
     name: Dotnet Side by Side testing sample
     steps:
       - uses: actions/checkout@v2
-      - name: Setup dotnet
+      - name: Setup dotnet 2.2
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '2.2.103'
-      - name: Setup dotnet
+      - name: Setup dotnet 3.1
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '3.1.x'
@@ -32,7 +32,7 @@ jobs:
         run: dotnet build --configuration Release
         working-directory: src/libs/Logging
       - name: Pack with dotnet
-        run: dotnet pack src/libs/Logging.csproj -p:NuspecFile=src/libs/Logging.csproj.nuspec --output nuget-packages --configuration Release
+        run: dotnet pack src/libs/Logging/Logging.csproj -p:NuspecFile=src/libs/Logging/Logging.csproj.nuspec --output nuget-packages --configuration Release
       - name: Push with dotnet
         run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
     
