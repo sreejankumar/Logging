@@ -1,10 +1,14 @@
 # Logging
-Logging abstraction with NLog
+Logging abstraction with NLog.
 * Console Logging
 * Netwrok Logging
 * Error Email Notification
 * Request Response Logging Middleware
 * Error Logging Middleware
+
+## Intallation
+
+You can instal the [library](https://www.nuget.org/packages/SK.Logging/) from nuget.
 
 ## Basic
 To use, add the following in your startup class
