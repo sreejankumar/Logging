@@ -35,11 +35,12 @@ jobs:
         run: dotnet pack Logging.csproj -p:NuspecFile=Logging.csproj.nuspec --output nuget-packages --configuration Release
         working-directory: src/libs/Logging
       - name: Push with dotnet
-        run: PACKAGE=$(find ./bin/Release/ -name "*.nupkg")
+        run: |
+             PACKAGE=$(find ./bin/Release/ -name "*.nupkg")
              PACKAGE_BASE_NAME=$(find ./nuget-packages -name "*.nupkg" -exec basename \{} \;)
              PACKAGE_URL="https://www.nuget.org/packages/SK.Logging/"
              echo $PACKAGE_URL
-            if ( curl -o/dev/null -sfI "$PACKAGE_URL" ); then exit 0; else echo "NEW Version detected"; fi
-            dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+             if( curl -o/dev/null -sfI "$PACKAGE_URL" ); then exit 0; else echo "NEW Version detected"; fi
+             dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
         working-directory: src/libs/Logging
     
