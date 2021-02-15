@@ -32,7 +32,8 @@ jobs:
         run: dotnet build --configuration Release
         working-directory: src/libs/Logging
       - name: Pack with dotnet
-        run: dotnet pack src/libs/Logging/Logging.csproj -p:NuspecFile=src/libs/Logging/Logging.csproj.nuspec --output nuget-packages --configuration Release
+        run: dotnet pack Logging.csproj -p:NuspecFile=Logging.csproj.nuspec --output nuget-packages --configuration Release
+        working-directory: src/libs/Logging
       - name: Push with dotnet
         run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
     
