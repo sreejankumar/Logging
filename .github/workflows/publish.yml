@@ -1,21 +1,19 @@
 # This is a basic workflow to help you get started with Actions
 
-name: logging-build
+name: logging-publish
 
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+ workflow_run:
+    workflows: ["logging-build"]
+    branches: [ master ]
+    types:
+      - completed
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build:
+  publish-nuget:
     runs-on: ubuntu-latest
     name: Dotnet Side by Side testing sample
     steps:
@@ -32,5 +30,10 @@ jobs:
         run: dotnet restore
         working-directory: src/libs/Logging
       - name: Bulid Project
-        run: dotnet build
-        working-directory: src/libs/Logging     
+        run: dotnet build --configuration Release
+        working-directory: src/libs/Logging
+      - name: Pack with dotnet
+        run: dotnet pack src/libs/Logging.csproj -p:NuspecFile=src/libs/Logging.csproj.nuspec --output nuget-packages --configuration Release
+      - name: Push with dotnet
+        run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+    
