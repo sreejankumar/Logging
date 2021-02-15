@@ -11,7 +11,7 @@
     <releaseNotes>Logging abstraction with NLog, by taking network and email configuration by Options</releaseNotes>
     <copyright>Copyright 2021</copyright>
     <tags>SK.Logging</tags>
-    <projectUrl>https://github.com/sreejankumar/Logging</tags>
+    <projectUrl>https://github.com/sreejankumar/Logging</projectUrl>
     <dependencies>
       <group targetFramework="netstandard2.1">
         <dependency id="NLog" version="4.7.7"/>
