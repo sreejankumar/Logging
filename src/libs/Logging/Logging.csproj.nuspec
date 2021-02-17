@@ -2,13 +2,13 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>SK.Logging</id>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <authors>Sreejan Kumar</authors>
     <owners>Sreejan Kumar</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
     <description>Logging abstraction with NLog, by taking network and email configuration by Options </description>
-    <releaseNotes>Newtonsoft JSON package update</releaseNotes>
+    <releaseNotes>Fix for RequestResponseLoggingMiddleware</releaseNotes>
     <copyright>Copyright 2021</copyright>
     <tags>SK.Logging</tags>
     <projectUrl>https://github.com/sreejankumar/Logging</projectUrl>

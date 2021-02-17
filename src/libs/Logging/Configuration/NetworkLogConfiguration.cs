@@ -16,7 +16,7 @@ namespace Logging.Configuration
         /// </summary>
         public string NetworkLogAddress { get; set; }
         /// <summary>
-        /// Network Log Source : AWS-Staging, AWS-London, AWS-Boston
+        /// Network Log Source : AWS/Azure/Data Centre
         /// </summary>
         public string NetworkLogSource { get; set; }
         /// <summary>
