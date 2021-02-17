@@ -9,7 +9,7 @@ namespace Logging.Middleware
         private readonly RequestDelegate _next;
         private readonly Logger _logger;
 
-        protected RequestResponseLoggingMiddleware(RequestDelegate next)
+        public RequestResponseLoggingMiddleware(RequestDelegate next)
         {
             _next = next;
             _logger = LogManager.GetCurrentClassLogger();
